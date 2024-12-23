@@ -31,7 +31,21 @@ const User = mongoose.model('User', UserSchema);
 // Step 3: Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'https://tickitna.vercel.app/', // Adjust to your frontend's URL
+  origin: 'https://tickitna.vercel.app', // Adjust to your frontend's URL
+  credentials: true,
+}));
+
+// If you're using multiple domains (e.g., for local dev + production):
+const allowedOrigins = ['http://localhost:3000', 'https://tickitna.vercel.app'];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 

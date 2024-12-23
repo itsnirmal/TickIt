@@ -9,7 +9,7 @@ const model = {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`, // Include JWT token
+                    Authorization: `Bearer ${localStorage.getItem('token')}`, // Include JWT token
                 },
             });
 
