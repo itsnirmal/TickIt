@@ -5,7 +5,7 @@ const model = {
     async loadTodos() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3000/api/todos', {
+            const response = await fetch('https://tickit-qw0u.onrender.com/api/todos', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const model = {
     async saveTodos() {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:3000/api/todos', {
+            const response = await fetch('https://tickit-qw0u.onrender.com/api/todos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ async function handleLogin(event) {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('https://tickit-qw0u.onrender.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
@@ -190,7 +190,7 @@ async function handleSignUp(event) {
     }
 
     try {
-        const response = await fetch('http://localhost:3000/signup', {
+        const response = await fetch('https://tickit-qw0u.onrender.com/signup', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),

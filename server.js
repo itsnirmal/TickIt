@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken'); // Added for JWT
 
 // Initialize Express
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Step 1: Database Connection
 mongoose.connect(process.env.MONGODB_URL, {
@@ -31,7 +31,7 @@ const User = mongoose.model('User', UserSchema);
 // Step 3: Middleware
 app.use(express.json());
 app.use(cors({
-  origin: 'http://127.0.0.1:8080', // Adjust to your frontend's URL
+  origin: 'https://tickitna.vercel.app/', // Adjust to your frontend's URL
   credentials: true,
 }));
 
