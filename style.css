@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FF9F87, #FFF4E1);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+/* General Container Styling */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 1rem;
+}
+
+
+.todoapp {
+    background: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.todoapp .header {
+    margin-bottom: 1.5rem;
+}
+
+
+.join-now-btn, .logout-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    background-color: #FF7043;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+}
+.join-now-btn:hover, .logout-btn:hover{
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+/* Hidden Sections */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #FF7043;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+input::placeholder {
+    font-style: italic;
+}
+
+.new-todo {
+    width: 100%;
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+
+}
+
+.new-todo:focus {
+    outline: none;
+    border-color: #FF7043;
+}
+
+.theme-toggle {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    background: #FF7043;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #E64A19;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    overflow-y: auto;
+    height: 20vh;
+    width: 100%;
+}
+
+/* Todo item styling */
+.todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #fff5e8;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.todo-list li:hover {
+    background: #FFE3C2;
+}
+
+.todo-list li.completed {
+    opacity: 0.6;
+}
+
+.todo-list li.completed label {
+    text-decoration: line-through;
+}
+
+.todo-list input[type="checkbox"] {
+    margin-right: 0.75rem;
+}
+
+.todo-list label {
+    flex-grow: 1;
+    font-size: 1rem;
+}
+
+.todo-list .destroy {
+    font-size: 1.2rem;
+    color: #E64A19;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+    margin-left: auto;
+    /* Ensure button stays on the rightmost part */
+}
+
+.todo-list li:hover .destroy {
+    opacity: 1;
+}
+
+.todo-list .destroy:hover {
+    color: #D84315;
+}
+
+.todo-list .destroy::before {
+    content: '\f00d';
+    /* FontAwesome icon for X */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9rem;
+    color: #6c757d;
+    transition: color 0.3s ease;
+}
+
+
+.filters {
+    display: flex;
+    list-style: none;
+    padding: 10;
+    margin: 10;
+    justify-content: end;
+}
+
+.filters li {
+    margin: 0 0.5rem;
+}
+
+.filters a {
+    text-decoration: none;
+    color: #6c757d;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.filters a:hover,
+.filters a.selected {
+    color: #FF7043;
+    background-color: #FFE3C2;
+}
+
+.clear-completed {
+    font-size: 1rem;
+    color: white;
+    background: #E64A19;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.clear-completed:hover {
+    transform: scale(1.05);
+}
+
+/* Authentication Section */
+.auth-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.auth-section.hidden {
+    display: none;
+}
+
+.auth-section h2 {
+    margin-bottom: 1rem;
+}
+
+.auth-section form {
+    width: 100%;
+}
+
+
+.auth-section input {
+    margin: 0.5rem 0;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 90%;
+}
+.auth-section input:focus {
+    outline: none;
+    border-color: #FF7043;
+}
+       
+
+.auth-section button {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    width: 100%;
+    background-color: #FF7043;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-section button:hover {
+    background-color: #E64A19;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .todoapp {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .new-todo {
+        font-size: 1rem;
+    }
+
+    .todo-list li {
+        padding: 0.5rem;
+    }
+
+          .auth-section {
+              padding: 1.5rem;
+              max-width: 60%;
+              /* Wider on smaller screens */
+          }
+    
+          .auth-section h2 {
+              font-size: 1.5rem;
+              /* Adjust title size */
+          }
+    
+          .auth-section button {
+              font-size: 0.9rem;
+              padding: 0.65rem;
+          }
+}
+
+@media (max-width: 480px) {
+    .todoapp {
+        padding: 1rem;
+        margin:0 1.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.75rem;
+    }
+
+    .new-todo {
+        font-size: 0.9rem;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filters {
+        margin: 0.5rem 0;
+    }
+          .auth-section {
+              padding: 1.5rem;
+          }
+    
+          .auth-section h2 {
+              font-size: 1.25rem;
+          }
+    
+          .auth-section form input {
+              font-size: 0.9rem;
+              padding: 0.65rem;
+          }
+    
+          .auth-section button {
+              font-size: 0.85rem;
+              padding: 0.5rem;
+          }
+}
